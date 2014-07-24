@@ -2,7 +2,6 @@
 - hosts: app
   sudo: true
   vars:
-    rails_user: cap
     nginx_user: nginx
     hostname: vagrant-ansible-rails
     environtment: vagrant
