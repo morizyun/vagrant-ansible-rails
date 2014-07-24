@@ -1,0 +1,11 @@
+---
+- name: install nginx
+  yum: name=nginx state=installed
+- name: create nginx user
+  user: name={{ nginx_user }}
+- name: ensure nginx/conf.d is empty
+  shell: rm -f /etc/nginx/conf.d/*
+- name: place nginx conf file
+  copy: src={{ environtment }}/nginx.conf dest=/etc/nginx/nginx.conf mode=0644 owner=root group=root
+  notify: restart nginx
+

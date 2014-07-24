@@ -1,0 +1,10 @@
+---
+- name: install MySQL
+  yum: name={{ item }} state=installed
+  with_items:
+    - mysql-server
+    - MySQL-python
+  tags: mysqld
+- name: Auto Running MySQL
+  service: name=mysqld state=running enabled=yes
+  tags: mysqld

@@ -1,0 +1,43 @@
+---
+# package installation
+- name: add EPEL
+  shell: creates=/etc/yum.repos.d/epel.repo rpm -Uvh --replacepkgs http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+- name: yum update
+  yum: name=* state=latest
+- name: install basic packages
+  yum: name={{ item }} state=installed
+  with_items:
+    - git
+    - curl
+    - wget
+    - libselinux-python
+    - ruby-devel
+    - readline-devel
+    - ncurses-devel
+    - gdbm-devel
+    - openssl-devel
+    - libxslt-devel
+    - sqlite-devel
+    - libyaml
+    - libyaml-devel
+    - tcl-devel
+    - db4-devel
+    - libffi-devel
+
+- name: install Development Tool
+  sudo: true
+  shell: yum -y groupinstall "Development Tools"
+
+# timezone
+- name: set timezone
+  file: src=/usr/share/zoneinfo/Asia/Tokyo dest=/etc/localtime state=link force=yes
+
+# hostname
+- name: set hostname
+  hostname: name={{ hostname }}
+- name: set /etc/hosts
+  lineinfile: dest=/etc/hosts regexp=^127\.0\.0\.1 line='127.0.0.1 {{ hostname }} localhost localhost.localdomain'
+
+# DNS Info mation
+- name: update resolv.conf
+  shell: chmod a+w /etc/resolv.conf && echo 'options single-request-reopen' >> /etc/resolv.conf
