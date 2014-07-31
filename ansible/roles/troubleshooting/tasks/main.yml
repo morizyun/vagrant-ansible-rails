@@ -1,0 +1,5 @@
+---
+# mount error => http://qiita.com/osamu1203/items/10e19c74c912d303ca0b
+- name: troubleshooting mount error
+  sudo: true
+  shell: /etc/init.d/vboxadd setup

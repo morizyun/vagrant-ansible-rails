@@ -4,4 +4,6 @@
   shell: creates=/etc/profile.d/rvm.sh curl -sSL https://get.rvm.io | bash -s stable --ruby={{ ruby_version }}
 - name: remove rvm warning
   shell: export rvmsudo_secure_path=1
+- name: set .gemrc
+  shell: "echo 'gem: --no-rdoc --no-ri' > $HOME/.gemrc"
 

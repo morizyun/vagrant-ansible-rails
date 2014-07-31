@@ -23,6 +23,13 @@
     - tcl-devel
     - db4-devel
     - libffi-devel
+    - gcc
+    - libxml2
+    - libxml2-devel
+    - libxslt
+    - libxslt-devel
+    - ImageMagick
+    - ImageMagick-devel
 
 - name: install Development Tool
   sudo: true

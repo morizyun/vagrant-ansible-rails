@@ -2,14 +2,13 @@
 - hosts: app
   sudo: true
   vars:
-    hostname: vagrant-ansible-rails
-    environtment: vagrant
+    hostname: server-production
+    environtment: production
     ruby_version: 2.1.2
     rbenv_root: /home/vagrant/.rbenv
     rbenv_bin: /home/vagrant/.rbenv/libexec/rbenv
   roles:
     - common
-    - iptables
     - rvm
     - nginx
     - mysql
